@@ -30,6 +30,7 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
+
 dnf module disable nodejs -y &>> $LOGFILE
 
 VALIDATE $? "Disabling current NodeJS"
@@ -85,6 +86,9 @@ VALIDATE $? "Enable catalogue"
 systemctl start catalogue &>> $LOGFILE
 
 VALIDATE $? "Starting catalogue"
+
+    cp /home/centos/roboshop-shell/mongo.repo  /etc/yum.repos.d/mongo.repo   
+
 
 
 
