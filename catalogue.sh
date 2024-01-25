@@ -1,5 +1,7 @@
 #!/bin/bash/
 
+
+
 ID=$(id -u)
 R="\e[31m"
 G="\e[32m"
@@ -29,7 +31,6 @@ then
 else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
-
 
 dnf module disable nodejs -y &>> $LOGFILE
 
@@ -79,7 +80,7 @@ systemctl daemon-reload &>> $LOGFILE
 
 VALIDATE $? "catalogue daemon reload"
 
-systemctl enable catalogue  &>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
 
 VALIDATE $? "Enable catalogue"
 
@@ -87,10 +88,7 @@ systemctl start catalogue &>> $LOGFILE
 
 VALIDATE $? "Starting catalogue"
 
-    cp /home/centos/roboshop-shell/mongo.repo  /etc/yum.repos.d/mongo.repo   
-
-
-
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 VALIDATE $? "copying mongodb repo"
 
